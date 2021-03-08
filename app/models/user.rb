@@ -19,11 +19,7 @@ class User < ApplicationRecord
   end
 
   def invitation_sent?(user)
-    if Friendship.exists?(user: self, friend: user)
-      true
-    else
-      Friendship.exists?(user: user, friend: self)
-    end
+    Friendship.exists?(user: self, friend: user) or Friendship.exists?(user: user, friend: self)
   end
 
   private
