@@ -9,4 +9,26 @@ class User < ApplicationRecord
   has_many :posts
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+
+  has_many :invitations, class_name: 'Friendship'
+  has_many :friendships, foreign_key: 'friend_id'
+  has_many :friends, through: 'friendships'
+
+  def friends_with?(user)
+    related?(user, Friendship::ACCEPT)
+  end
+
+  def invitation_sent?(user)
+    Friendship.exists?(user: self, friend: user) or Friendship.exists?(user: user, friend: self)
+  end
+
+  private
+
+  def related?(user, status)
+    if Friendship.all_of_status(user, status).where_involved(self).empty?
+      !Friendship.all_of_status(self, status).where_involved(user).empty?
+    else
+      true
+    end
+  end
 end

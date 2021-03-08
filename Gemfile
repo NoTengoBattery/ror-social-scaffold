@@ -40,11 +40,22 @@ gem 'devise'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'factory_bot_rails', '~> 6.1'
+  gem 'rubocop-rails', '~> 2.9', '>= 2.9.1'
+  gem 'shoulda-matchers', '~> 4.5', '>= 4.5.1'
   gem 'sqlite3', '~> 1.4', '>= 1.4.2'
 end
 
 group :test do
-  gem 'rspec'
+  gem 'rspec-rails', '~> 4.0', '>= 4.0.2'
+  # Adds support for Capybara system testing and selenium driver
+  gem 'capybara', '>= 3.26'
+  gem 'database_cleaner', '~> 2.0', '>= 2.0.1'
+  gem 'selenium-webdriver'
+  gem 'webdrivers'
+  # Gems to support testing better
+  gem 'faker', '~> 2.16'
+  gem 'rexml', '~> 3.2', '>= 3.2.4'
 end
 
 group :production do
