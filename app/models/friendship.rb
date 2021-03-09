@@ -11,9 +11,12 @@ class Friendship < ApplicationRecord
   belongs_to :user
   belongs_to :friend, class_name: 'User'
 
-  scope :all_of_status, ->(u, s) { where('(user_id=? OR friend_id=?) AND status=?', u.id, u.id, s) }
-  scope :all_received_of_status, ->(u, s) { where('friend_id=? AND status=?', u.id, s) }
-  scope :where_involved, ->(r) { where('user_id=? OR friend_id=?', r.id, r.id) }
+  scope :all_of_status, ->(u, s) { where('(user_id=? OR friend_id=?) AND status=?', u, u, s) }
+  scope :all_related_with_status, lambda { |u, f, s|
+                                    where('((user_id=? AND friend_id=?) OR (user_id=? AND friend_id=?)) AND status=?',
+                                          u, f, f, u, s)
+                                  }
+  scope :all_received_of_status, ->(u, s) { where('friend_id=? AND status=?', u, s) }
 
   def accept
     self.status = Friendship::ACCEPT

@@ -25,10 +25,6 @@ class User < ApplicationRecord
   private
 
   def related?(user, status)
-    if Friendship.all_of_status(user, status).where_involved(self).empty?
-      !Friendship.all_of_status(self, status).where_involved(user).empty?
-    else
-      true
-    end
+    !Friendship.all_related_with_status(self, user, status).empty?
   end
 end
