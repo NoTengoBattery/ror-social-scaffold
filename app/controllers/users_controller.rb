@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @all_my_pending = Friendship.all_received_of_status(@user, Friendship::PENDING) if @user == current_user
+    @all_my_pending = Friendship.all_received(@user).with_status(Friendship::PENDING) if @user == current_user
     @posts = @user.posts.ordered_by_most_recent
   end
 
