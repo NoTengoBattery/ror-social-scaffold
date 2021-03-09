@@ -25,6 +25,6 @@ class User < ApplicationRecord
   private
 
   def related?(user, status)
-    !Friendship.all_related_with_status(self, user, status).empty?
+    !Friendship.all_related(self, user).with_status(status).empty?
   end
 end
