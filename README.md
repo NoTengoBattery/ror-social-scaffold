@@ -74,6 +74,18 @@ TBA
 
 TBA
 
+👤 **Widzmarc Jean Nesly Phelle**
+
+- GitHub: [@widzthedvloper](https://github.com/widzthedvloper)
+- Twitter: [@widzthedvloper](https://twitter.com/widzthedvloper)
+- LinkedIn: [@widzthedvloper](https://www.linkedin.com/in/widzmarc-jean-nesly-phelle-252a26129/)
+
+👤 **Oever González**
+
+- GitHub: [@NoTengoBattery](https://github.com/NoTengoBattery)
+- Twitter: [@NoTengoBattery](https://twitter.com/NoTengoBattery)
+- LinkedIn: [@notengobattery](https://www.linkedin.com/in/notengobattery/)
+
 ## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!
