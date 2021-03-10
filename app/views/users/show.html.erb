@@ -1,0 +1,16 @@
+<section class="user-section">
+  <h2><%= "Name: #{@user.name}" %></h2>
+  <span class="invite-link primary">
+    <%= invitation_link(@user)%>
+  </span>
+  <% if @user == current_user and not @all_my_pending.empty? %>
+    <h2> All recieved and pending invitations </h2>
+    <%= render @all_my_pending %>
+  <% end %>
+  <article class="timeline">
+    <h3>Recent posts:</h3>
+    <ul class="posts">
+      <%= render @posts %>
+    </ul>
+  </article>
+</section>
